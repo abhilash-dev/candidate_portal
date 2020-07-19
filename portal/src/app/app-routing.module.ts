@@ -7,10 +7,7 @@ import { LoginComponent } from "./components/login/login.component"
 import { NavbarComponent } from "./components/navbar/navbar.component"
 import { NotFoundComponent } from "./components/not-found/not-found.component"
 import { RegisterComponent } from "./components/register/register.component"
-import { SidebarComponent } from "./components/sidebar/sidebar.component"
-import { UsersComponent } from "./components/users/users.component"
 import { UserDetailsComponent } from "./components/user-details/user-details.component"
-import { EditUserComponent } from "./components/edit-user/edit-user.component"
 
 import { AuthGuard } from "./guard/auth.guard"
 
@@ -20,7 +17,6 @@ const routes: Routes = [
   { path: "login", component: LoginComponent },
   { path: "register", component: RegisterComponent },
   { path: "user/add", component: AddUserComponent, canActivate: [AuthGuard] },
-  { path: "user/edit/:id", component: EditUserComponent, canActivate: [AuthGuard] },
   { path: "user/:id", component: UserDetailsComponent, canActivate: [AuthGuard] },
   { path: "**", component: NotFoundComponent }
 ];

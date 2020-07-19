@@ -17,7 +17,6 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { UserDetailsComponent } from './components/user-details/user-details.component';
-import { EditUserComponent } from './components/edit-user/edit-user.component';
 import { FlashMessagesModule } from "angular2-flash-messages"
 
 import { UserService } from "./services/user.service"
@@ -34,8 +33,7 @@ import { AuthService } from "./services/auth.service"
     LoginComponent,
     RegisterComponent,
     NotFoundComponent,
-    UserDetailsComponent,
-    EditUserComponent
+    UserDetailsComponent
   ],
   imports: [
     BrowserModule,
