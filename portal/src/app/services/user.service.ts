@@ -4,11 +4,12 @@ import { Observable, combineLatest } from "rxjs";
 import { map, flatMap } from "rxjs/operators"
 import { User } from "../models/user"
 import { Employment } from "../models/employment"
+import { EmploymentEntry } from '../models/employment-entry';
 
 
 
 interface DocWithId {
-  id: string;
+  id?: string;
 }
 
 
@@ -17,14 +18,12 @@ interface DocWithId {
 })
 export class UserService {
   userCollection: AngularFirestoreCollection<User>;
-  emplymentCollection: AngularFirestoreCollection<Employment>;
   users: Observable<User[]>;
   user: Observable<User>;
   employment_history: Observable<Employment[]>;
 
   constructor(private firestore: AngularFirestore) {
     this.userCollection = this.firestore.collection('user');
-    this.emplymentCollection = this.firestore.collection('employment', ref => ref.orderBy('from', 'desc'));
   }
 
   getUsers(): Observable<User[]> {
@@ -63,5 +62,17 @@ export class UserService {
         ),
         flatMap(combined => combineLatest(combined))
       );
+  }
+
+  addNewUser(user: User, employment_history: EmploymentEntry[]) {
+    const { id, ...data } = user
+    this.userCollection.add(data).then(docRef => {
+      employment_history.map(e => {
+        let employment: Employment = { ...e }
+        employment.user_id = docRef.id
+        console.log(docRef.id)
+        this.firestore.collection('user').doc(docRef.id).collection('employment').add(employment);
+      })
+    })
   }
 }

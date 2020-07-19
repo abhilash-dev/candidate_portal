@@ -4,6 +4,7 @@ import { environment } from "../environments/environment";
 import { AngularFireModule } from "@angular/fire";
 import { AngularFirestoreModule } from "@angular/fire/firestore"
 import { AngularFireAuthModule } from "@angular/fire/auth"
+import { FormsModule } from "@angular/forms"
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,6 +18,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { UserDetailsComponent } from './components/user-details/user-details.component';
 import { EditUserComponent } from './components/edit-user/edit-user.component';
+import { FlashMessagesModule } from "angular2-flash-messages"
 
 import { UserService } from "./services/user.service"
 
@@ -36,10 +38,12 @@ import { UserService } from "./services/user.service"
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebaseConfig, 'candidateportal'),
     AngularFirestoreModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    FlashMessagesModule.forRoot()
   ],
   providers: [UserService],
   bootstrap: [AppComponent]
