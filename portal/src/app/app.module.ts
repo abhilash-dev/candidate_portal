@@ -21,6 +21,7 @@ import { EditUserComponent } from './components/edit-user/edit-user.component';
 import { FlashMessagesModule } from "angular2-flash-messages"
 
 import { UserService } from "./services/user.service"
+import { AuthService } from "./services/auth.service"
 
 @NgModule({
   declarations: [
@@ -45,7 +46,7 @@ import { UserService } from "./services/user.service"
     AngularFireAuthModule,
     FlashMessagesModule.forRoot()
   ],
-  providers: [UserService],
+  providers: [UserService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

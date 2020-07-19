@@ -6,7 +6,7 @@
         <input type="text" style="margin-right: 1rem;" placeholder="Search users by name" />
         <button class="btn btn-secondary"><i style="margin-right: 1rem;" class="fa fa-search"></i>Search</button>
     </div>
-    <table *ngIf="users?.length > 0" class="table table-striped">
+    <table *ngIf="users?.length > 0; else noUsers" class="table table-striped">
         <thead class="thead-inverse">
             <tr>
                 <th>Name</th>
@@ -26,4 +26,11 @@
             </tr>
         </tbody>
     </table>
+</div>
+
+<div class="container">
+    <ng-template #noUsers>
+        <hr>
+        <h4>There are no users in the system</h4>
+    </ng-template>
 </div>
