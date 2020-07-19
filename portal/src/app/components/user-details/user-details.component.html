@@ -132,7 +132,7 @@
                 <div class="form-row">
                     <div class="form-group col-md-5">
                         <label for="companyFrom">From</label>
-                        <input class="form-control" name="companyFrom{{i}}" placeholder="MM/DD/YYY" type="text"
+                        <input class="form-control" name="companyFrom{{i}}" placeholder="MM/DD/YYY" type="date"
                             #companyFrom="ngModel" [ngClass]="{'is-invalid':companyFrom.errors && companyFrom.touched}"
                             [(ngModel)]="e.from" required value="new Date(e.from)" [readonly]="!editUser" />
                         <div [hidden]="!companyFrom.errors?.required" class="invalid-feedback"> From date is
@@ -141,7 +141,7 @@
                     </div>
                     <div class="form-group col-md-5">
                         <label for="companyTo">To</label>
-                        <input class="form-control" name="companyTo{{i}}" placeholder="MM/DD/YYY" type="text"
+                        <input class="form-control" name="companyTo{{i}}" placeholder="MM/DD/YYY" type="date"
                             #companyTo="ngModel" [ngClass]="{'is-invalid':companyTo.errors && companyTo.touched}"
                             [(ngModel)]="e.to" value="e.to" [readonly]="!editUser" />
                     </div>

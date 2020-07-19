@@ -3,8 +3,9 @@
         <h2><i class="fa fa-users"></i>Users</h2>
     </div>
     <div class="col-md-6">
-        <input type="text" style="margin-right: 1rem;" placeholder="Search users by name" />
-        <button class="btn btn-secondary"><i style="margin-right: 1rem;" class="fa fa-search"></i>Search</button>
+        <input type="text" style="margin-right: 1rem;" placeholder="Search users by name"
+            (keyup)="filter($event.target.value)" />
+        <i style="margin-right: 1rem;" class="fa fa-search"></i>
     </div>
     <table *ngIf="users?.length > 0; else noUsers" class="table table-striped">
         <thead class="thead-inverse">
