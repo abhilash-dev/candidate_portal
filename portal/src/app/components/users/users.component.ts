@@ -14,10 +14,13 @@ export class UsersComponent implements OnInit {
   constructor(private userService: UserService) { }
 
   ngOnInit(): void {
+    // initialize all the users from the firestore collection for users
     this.userService.getUsers().subscribe(users => this.users = this.unfiltered_users = users);
   };
 
+  // invoked upon an entry into search bar
   filter(term: string) {
+    // filter the user records whose name starts with search term & update the UI
     this.users = this.unfiltered_users.filter(user => user.name.startsWith(term));
   }
 

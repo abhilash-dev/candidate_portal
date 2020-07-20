@@ -19,6 +19,7 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    // check if the user is already authenticated, If yes redirect to dashboard
     this.authService.checkUserAuthState().subscribe(auth => {
       if (auth) {
         this.router.navigateByUrl("/");
@@ -27,11 +28,15 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
+    // invoke the fireAuth service for login with user provided credentials
     this.authService.login(this.email, this.password)
       .then(res => {
+        // on success, redirect user to dashboard
         this.router.navigateByUrl("/");
+        // show success toast to user
         this.flashMessageService.show("You've successfully logged In", { cssClass: "alert-success", timeout: 3000 })
       }).catch(err => {
+        // on failure, dispaly a failure toast to user
         this.flashMessageService.show(`Error - ${err}`, { cssClass: "alert-success", timeout: 3000 })
       })
   }
