@@ -1,0 +1,21 @@
+a {
+    color: #fff;
+}
+
+a:hover {
+    color: #e74c3c;
+}
+
+.dialog {
+    float: right;
+    text-align: left;
+    width: 60%;
+    margin: 5% auto 0;
+}
+
+.image {
+    position: absolute;
+    float: left;
+    top: 0;
+    width: 60%;
+}
