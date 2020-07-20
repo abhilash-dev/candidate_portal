@@ -2,7 +2,6 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { User } from '../../models/user'
 import { EmploymentEntry } from '../../models/employment-entry'
 import { Employment } from '../../models/employment'
-import { Form } from '@angular/forms';
 import { FlashMessagesService } from "angular2-flash-messages"
 import { Router } from "@angular/router"
 import { UserService } from "../../services/user.service"
@@ -57,7 +56,6 @@ export class AddUserComponent implements OnInit {
       return;
     } else {
       this.userService.addNewUser(this.user, this.employment_history);
-      let u: User = <User>form.value
 
       this.flashMessageService.show("New User added!", {
         cssClass: 'alert-Success', timeout: 4000

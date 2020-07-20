@@ -3,7 +3,6 @@ import { UserService } from "../../services/user.service"
 import { Router, ActivatedRoute, Params } from "@angular/router"
 import { FlashMessagesService } from "angular2-flash-messages"
 import { User } from "../../models/user"
-import { Employment } from "../../models/employment"
 import { EmploymentEntry } from '../../models/employment-entry'
 
 
@@ -39,7 +38,7 @@ export class UserDetailsComponent implements OnInit {
     if (confirm('Are you sure?')) {
       this.userService.deleteUser(this.user);
       this.flashMessageService.show("User deleted successfully!", {
-        cssClass: 'alert-Success', timeout: 4000
+        cssClass: 'alert-success', timeout: 4000
       })
 
       this.router.navigateByUrl("/")
@@ -59,7 +58,7 @@ export class UserDetailsComponent implements OnInit {
     this.userService.updateUser(this.user);
 
     this.flashMessageService.show("User updated successfully!", {
-      cssClass: 'alert-Success', timeout: 4000
+      cssClass: 'alert-success', timeout: 4000
     })
 
     this.router.navigateByUrl("/")

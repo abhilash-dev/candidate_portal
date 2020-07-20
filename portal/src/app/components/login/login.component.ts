@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from "../../services/auth.service"
 import { Router } from "@angular/router"
+import { FlashMessagesService } from "angular2-flash-messages"
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,8 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private authService: AuthService
+    private authService: AuthService,
+    private flashMessageService: FlashMessagesService
   ) { }
 
   ngOnInit(): void {
@@ -28,8 +30,9 @@ export class LoginComponent implements OnInit {
     this.authService.login(this.email, this.password)
       .then(res => {
         this.router.navigateByUrl("/");
+        this.flashMessageService.show("You've successfully logged In", { cssClass: "alert-success", timeout: 3000 })
       }).catch(err => {
-        console.error("Something went wrong!" + err);
+        this.flashMessageService.show(`Error - ${err}`, { cssClass: "alert-success", timeout: 3000 })
       })
   }
 }

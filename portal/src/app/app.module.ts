@@ -39,10 +39,10 @@ import { AuthService } from "./services/auth.service"
     BrowserModule,
     FormsModule,
     AppRoutingModule,
+    FlashMessagesModule.forRoot(),
     AngularFireModule.initializeApp(environment.firebaseConfig, 'candidateportal'),
     AngularFirestoreModule,
     AngularFireAuthModule,
-    FlashMessagesModule.forRoot()
   ],
   providers: [UserService, AuthService],
   bootstrap: [AppComponent]
